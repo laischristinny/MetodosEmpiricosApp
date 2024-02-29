@@ -121,7 +121,7 @@ const App = () => {
     setPontuacao({
       'Estudo de Caso': 0,
       'Experimento Controlado': 0,
-      Etnografia: 0,
+      'Etnografia': 0,
       'Pesquisa-ação': 0,
       'Pesquisa (Survey Research)': 0,
     });
