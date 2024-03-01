@@ -64,6 +64,15 @@ const App = () => {
         'Condições do mundo real, não manipuladas ou controladas para fins de experimentação ou teste.',
         'Um ambiente controlado é criado quando os pesquisadores têm a capacidade de manipular e regular as condições experimentais de maneira precisa.'
       ],
+    },
+    {
+      pergunta: 'Tipos de Dados: São necessários dados quantitativos, qualitativos ou ambos?',
+      opcoes: ['Dados Quantitativos', 'Dados Qualitativos', 'Ambos'],
+      explicacoes: [
+        'Informações que são expressas numericamente e podem ser medidas em termos de quantidade.',
+        'Informações que não são expressas numericamente, mas sim descritas em termos de qualidade ou características. ',
+        'As duas opções se aplicam',
+      ],
     }
   ];
 
@@ -90,6 +99,13 @@ const App = () => {
         'Pesquisa-ação': 3,
         'Pesquisa (Survey Research)': 2,
       },
+      'Natureza Avaliativa':{
+        'Estudo de Caso': 3,
+        'Experimento Controlado': 5,
+        'Etnografia': 2,
+        'Pesquisa-ação': 5,
+        'Pesquisa (Survey Research)': 3,
+      },
       'Ambiente Controlado':{
         'Estudo de Caso': 2,
         'Experimento Controlado': 5,
@@ -97,18 +113,22 @@ const App = () => {
         'Pesquisa-ação': 3,
         'Pesquisa (Survey Research)': 5,
       },
+      'Ambiente Real':{
+        'Estudo de Caso': 5,
+        'Experimento Controlado': 2,
+        'Etnografia': 5,
+        'Pesquisa-ação': 5,
+        'Pesquisa (Survey Research)': 3,
+      },
     };
 
     setPontuacao((pontuacaoAtual) => {
       const novaPontuacao = { ...pontuacaoAtual };
-
       for (const metodo in pontuacoesPorMetodo[opcao]) {
         novaPontuacao[metodo] += pontuacoesPorMetodo[opcao][metodo];
       }
-
       return novaPontuacao;
     });
-
     if (perguntaAtual + 1 < perguntas.length) {
         setPerguntaAtual((perguntaAtual) => perguntaAtual + 1);
       } else {
