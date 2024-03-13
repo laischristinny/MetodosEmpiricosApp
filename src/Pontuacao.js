@@ -406,7 +406,7 @@ const App = () => {
         ) : (
           <p>Houve um empate entre os métodos: {metodosVencedores.join(', ')}</p>
         )}
-        <button onClick={reiniciarPesquisa}>Reiniciar Pesquisa</button>
+        <button onClick={reiniciarPesquisa} className='botao'>Reiniciar Pesquisa</button>
       </div>
     );
   }

@@ -1,16 +1,29 @@
+import React from 'react';
 import './App.css';
-import LogicApp from './Pontuacao';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import ComoFunciona from './Como-funciona';
+import LogicApp from './Pontuacao';
+
+const ComoFuncionaButton = () => {
+  const location = useLocation();
+
+  if (location.pathname === '/') {
+    return (
+      <Link to="/como-funciona">
+        <button className="botao">Como funciona?</button>
+      </Link>
+    );
+  }
+
+  return null;
+};
 
 function App() {
   return (
     <Router>
       <div className="App">
         <h1 className="titulo">Algoritmo para a escolha de métodos empíricos</h1>
-        <Link to="/como-funciona"> 
-          <button className="botao">Como funciona?</button>
-        </Link>
+        <ComoFuncionaButton />
         <Routes>
           <Route path="/" element={<LogicApp />} />
           <Route path="/como-funciona" element={<ComoFunciona />} />
