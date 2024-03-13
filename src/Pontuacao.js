@@ -1,18 +1,26 @@
 import React, { useState } from 'react';
+import './Pontuacao.css';
+import { BrowserRouter as Link } from 'react-router-dom';
 
-const Pergunta = ({ pergunta, opcoes, onResposta, explicacoes }) => {
+
+const Questionario = ({ pergunta, opcoes, onResposta, explicacoes, descricao }) => {
     return (
-      <div>
-        <p>{pergunta}</p>
-        {opcoes.map((opcao, index) => (
-          <button style={{ marginRight: '8px' }}
-            key={opcao}
-            onClick={() => onResposta(opcao)}
-            title={explicacoes[index]}
-          >
-            {opcao}
-          </button>
-        ))}
+      <div className="Questionario"> 
+        <div className="Pergunta">
+          <p>{pergunta}</p>
+        </div>
+        <div className="Descricao">
+          <p>{descricao}</p>
+        </div>
+          {opcoes.map((opcao, index) => (
+            <button className="opcao"
+              key={opcao}
+              onClick={() => onResposta(opcao)}
+              title={explicacoes[index]}
+            >
+              {opcao}
+            </button>
+          ))}
       </div>
     );
 };
@@ -21,7 +29,7 @@ const Pontuacao = ({ pontuacao }) => {
   const listaPontuacao = Object.entries(pontuacao);
 
   return (
-    <div>
+    <div className="Pontuacao">
       <h2>Pontuação</h2>
       <ul>
         {listaPontuacao.map(([metodo, pontos]) => (
@@ -50,6 +58,7 @@ const App = () => {
     {
       pergunta: '1- Natureza do Problema: A pesquisa busca explorar, descrever, explicar ou avaliar fenômenos?',
       opcoes: ['Natureza Descritiva', 'Natureza Explicativa','Natureza Exploratória','Natureza Avaliativa'],
+      descricao: 'Essa definição inicial impacta diretamente as estratégias metodológicas, moldando a abordagem da pesquisa e influenciando suas perguntas e interpretações.',
       explicacoes: [
         'Abordagem ou característica de algo que se concentra na descrição detalhada e objetiva dos fenômenos ou objetos em questão',
         'Abordagem que busca entender e explicar as relações de causa e efeito entre variáveis ou fenômenos.',
@@ -60,6 +69,7 @@ const App = () => {
     {
       pergunta: '2- Ambiente de Estudo: O estudo ocorrerá em um ambiente controlado ou no ambiente real de produção?',
       opcoes: ['Ambiente Controlado', 'Ambiente Real'],
+      descricao: 'Ao considerar o ambiente de estudo, orienta a escolha de métodos, destacando aqueles mais adequados para ambientes experimentais ou para contextos do mundo real.',
       explicacoes: [
         'Condições do mundo real, não manipuladas ou controladas para fins de experimentação ou teste.',
         'Um ambiente controlado é criado quando os pesquisadores têm a capacidade de manipular e regular as condições experimentais de maneira precisa.'
@@ -68,6 +78,7 @@ const App = () => {
     {
       pergunta: '3- Tipos de Dados: São necessários dados quantitativos, qualitativos ou ambos?',
       opcoes: ['Dados Quantitativos', 'Dados Qualitativos', 'Ambos'],
+      descricao: 'Define diretamente a abordagem metodológica, garantindo que o método escolhido seja capaz de capturar e analisar os dados de maneira coerente com os objetivos específicos da pesquisa.',
       explicacoes: [
         'Informações que são expressas numericamente e podem ser medidas em termos de quantidade.',
         'Informações que não são expressas numericamente, mas sim descritas em termos de qualidade ou características. ',
@@ -77,6 +88,7 @@ const App = () => {
     {
       pergunta: '4- Acesso à Participantes: Qual o nível de interação de participantes externos desejado?',
       opcoes: ['Desejo envolver uma quantidade significativa de pessoas', 'Não desejo envolver pessoas externas', 'Desejo envolver poucas pessoas externas'],
+      descricao: 'Ao questionar o nível de interação desejado, orienta a escolha de métodos, permitindo adaptar a pesquisa de acordo com a necessidade de acesso e colaboração com indivíduos externos.',
       explicacoes: [
         'Ao questionar o nível de interação desejado, orienta a escolha de métodos, permitindo adaptar a pesquisa de acordo com a necessidade de acesso e colaboração com indivíduos externos.',
         'Ao questionar o nível de interação desejado, orienta a escolha de métodos, permitindo adaptar a pesquisa de acordo com a necessidade de acesso e colaboração com indivíduos externos. ',
@@ -86,6 +98,7 @@ const App = () => {
     {
       pergunta: '5 - Temporalidade: O estudo será de curto ou longo prazo?',
       opcoes: ['Curto prazo', 'Longo prazo'],
+      descricao: 'A pergunta impacta diretamente o planejamento da pesquisa, garantindo que o método escolhido seja compatível com o horizonte temporal definido para o estudo.',
       explicacoes: [
         'Pode ter como objetivo compreender eventos imediatos, observar mudanças rápidas ou analisar efeitos de curto prazo.',
         'O objetivo principal é observar tendências ao longo do tempo, identificar padrões de mudança, entender desenvolvimentos graduais e avaliar o impacto cumulativo de diferentes variáveis.',
@@ -94,6 +107,7 @@ const App = () => {
     {
       pergunta: '6 - Objetivo Base: Qual das opções seu objetivo final mais se assemelha?',
       opcoes: ['Testar hipóteses', 'Explorar padrões', 'Avaliar impacto'],
+      descricao: 'A pergunta atua como uma bússola orientadora na seleção dos métodos, garantindo que a pesquisa seja conduzida de maneira alinhada com seus objetivos específicos, otimizando a relevância e eficácia do estudo.',
       explicacoes: [
         'Envolve a aplicação de métodos científicos ou lógicos para verificar a validade de suposições ou proposições.',
         'Refere-se à análise de dados para identificar regularidades, tendências ou relações sistemáticas entre variáveis',
@@ -103,6 +117,7 @@ const App = () => {
     {
       pergunta: '7- Controle de Variáveis: Deseja controlar variáveis independentes no ambiente de estudo?',
       opcoes: ['Sim, desejo o controle de variáveis', 'Não, o controle de variáveis é dispensável'],
+      descricao: 'Ao considerar o desejo de controle, direciona a escolha de métodos, destacando aqueles que oferecem maior controle experimental.',
       explicacoes: [
         'Variáveis independentes, em um contexto de pesquisa, são aquelas que são manipuladas ou controladas pelo pesquisador para observar seu efeito sobre outras variáveis.',
         'Variáveis independentes, em um contexto de pesquisa, são aquelas que são manipuladas ou controladas pelo pesquisador para observar seu efeito sobre outras variáveis.',
@@ -111,6 +126,7 @@ const App = () => {
     {
       pergunta: '8- Limitação Ética: Existem questões éticas que limitem à escolha do Método escolhido?',
       opcoes: ['Sim, existem questões éticas a serem consideradas', 'Não há questões éticas'],
+      descricao: 'Ao considerar limitações éticas, garante-se que a abordagem escolhida esteja alinhada com princípios éticos e normas. Isso assegura a integridade e o respeito aos participantes,  e promove a condução responsável da pesquisa.',
       explicacoes: [
         'Limitações técnicas referem-se a restrições ou obstáculos relacionados a aspectos técnicos ou tecnológicos que podem impactar um processo, projeto, produto ou pesquisa.',
         'Limitações técnicas referem-se a restrições ou obstáculos relacionados a aspectos técnicos ou tecnológicos que podem impactar um processo, projeto, produto ou pesquisa.',
@@ -119,6 +135,7 @@ const App = () => {
     {
       pergunta: '9- Complexidade do Fenômeno: O fenômeno estudado é complexo e multifacetado?',
       opcoes: ['Sim, é complexo e multifacetado', 'Não, o fenômeno é mais simples'],
+      descricao: ' Se o fenômeno é complexo, métodos como estudos de caso ou etnografias, que permitem uma análise aprofundada, podem ser mais apropriados. Se o fenômeno é mais simples, métodos mais diretos, como pesquisas, podem ser suficientes.',
       explicacoes: [
         'A complexidade do fenômeno refere-se à presença de múltiplos componentes, interações e fatores que tornam difícil compreender, prever ou modelar completamente um determinado evento, sistema ou processo',
         'A complexidade do fenômeno refere-se à presença de múltiplos componentes, interações e fatores que tornam difícil compreender, prever ou modelar completamente um determinado evento, sistema ou processo',
@@ -127,6 +144,7 @@ const App = () => {
     {
       pergunta: '10- Relevância Prática: O estudo visa resultados práticos imediatos ou contribuições teóricas a longo prazo?',
       opcoes: ['Resultados práticos imediatos', 'Contribuições teóricas a longo prazo'],
+      descricao: 'Indagar sobre a relevância prática orienta a escolha de métodos, assegurando que a pesquisa seja alinhada com os objetivos específicos de impacto prático ou contribuição teórica. Isso influencia diretamente a abordagem metodológica, garantindo que os métodos escolhidos estejam em sintonia com as metas de pesquisa.',
       explicacoes: [
         'Referem-se aos efeitos ou impactos imediatos e tangíveis que resultam de uma ação, decisão, experimento ou iniciativa.',
         'Referem-se às influências duradouras e significativas que uma teoria específica ou um corpo de conhecimento tem sobre um campo de estudo ao longo do tempo.',
@@ -366,11 +384,12 @@ const App = () => {
   if (!pesquisaConcluida) {
     return (
       <div>
-        <Pergunta
+        <Questionario
           pergunta={perguntas[perguntaAtual].pergunta}
           opcoes={perguntas[perguntaAtual].opcoes}
           onResposta={handleResposta}
           explicacoes={perguntas[perguntaAtual].explicacoes}
+          descricao={perguntas[perguntaAtual].descricao}
         />
         <Pontuacao pontuacao={pontuacao} />
       </div>

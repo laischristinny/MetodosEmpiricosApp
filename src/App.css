@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: grid;
+  justify-content: center;
+  gap: 10px;
 }
 
 .App-logo {
@@ -21,11 +24,32 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: rgb(245, 30, 181);
+  color:black;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.botao {
+  background-color: #ff6699;
+  border: none;
+  color: white;
+  padding: 15px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background-color: #ff88bb;
+}
+
+.titulo {
+  color:#ff6699;
 }
 
 @keyframes App-logo-spin {
