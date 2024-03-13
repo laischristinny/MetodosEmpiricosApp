@@ -1,3 +1,7 @@
+# Projeto de Engenharia Experimental
+
+## Alunos: Laís Christinny, Maria Cecília Medeiros, Pedro Hirschle
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
